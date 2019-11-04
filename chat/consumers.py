@@ -1,6 +1,17 @@
 import json
 
+from loguru import logger
+import asyncio
+from asgiref.sync import async_to_sync
 from channels.generic.websocket import AsyncWebsocketConsumer
+from channels.consumer import AsyncConsumer
+
+
+class Task1(AsyncConsumer):
+    async def test_print(self, message):
+        logger.debug("Test: " + message["message"])
+        await asyncio.sleep(5)
+        logger.debug("Test2: " + message["message"])
 
 
 class ChatConsumer(AsyncWebsocketConsumer):

@@ -12,6 +12,10 @@ def index(request):
         'type': 'chat_message',
         'message': 'someone loaded index'
     })
+    async_to_sync(channel_layer.send)('task1', {
+        'type': 'test.print',
+        'message': 'someone loaded index'
+    })
     return render(request, 'chat/index.html', {})
 
 

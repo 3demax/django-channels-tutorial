@@ -1,0 +1,1 @@
+python manage.py runworker task1
